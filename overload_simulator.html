@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>オーバーロードシミュレーター</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <h1 class="container">オーバーロードシミュレーター</h1>
+
+    <div class="container">
+        <div class="column">
+            <div class="container">
+    
+                <!-- オーバーロード説明 -->
+                <table id="table_head" class="table_head">
+                    <thead>
+                        <tr>
+                            <th>オプション名</th>
+                            <th>数値</th>
+                            <th>段階</th>
+                            <th>ロック状態</th>
+                        </tr>
+                    </thead>
+                </table>
+        
+                <!-- オーバーロード結果 -->
+                <div id="option_0" class="row">
+                    <div id="option_name_0" class="option_name gray">効果未獲得</div>
+                    <div id="option_value_0" class="option_value gray number_font"></div>
+                    <div id="option_rank_0" class="option_rank gray number_font"></div>
+                    <button class="button_lock" onclick="button_lock_clicked(this,0)">
+                        <img src="./images/unlock.png" width="60%" height="60%">
+                    </button>
+                </div>
+                <div id="option_1" class="row">
+                    <div id="option_name_1" class="option_name gray">効果未獲得</div>
+                    <div id="option_value_1" class="option_value gray number_font"></div>
+                    <div id="option_rank_1" class="option_rank gray number_font"></div>
+                    <button class="button_lock" onclick="button_lock_clicked(this,1)">
+                        <img src="./images/unlock.png" width="60%" height="60%">
+                    </button>
+                </div>
+                <div id="option_2" class="row">
+                    <div id="option_name_2" class="option_name gray">効果未獲得</div>
+                    <div id="option_value_2" class="option_value gray number_font"></div>
+                    <div id="option_rank_2" class="option_rank gray number_font"></div>
+                    <button class="button_lock" onclick="button_lock_clicked(this,2)">
+                        <img src="./images/unlock.png" width="60%" height="60%">
+                    </button>
+                </div>
+        
+                <!-- オーバーロードボタン -->
+                <div class="button_container">
+                    <a id="effect_change" class="button_roll button_roll_red" onclick="button_roll_effect_clicked()">
+                        装備改造
+                    </a>
+                    <a class="button_roll button_roll_blue" onclick="button_roll_value_clicked()">
+                        数値変更
+                    </a>
+                </div>
+        
+                <!-- 個数 -->
+                <div class="counter_container">
+                    <div class="counter">効果変更回数:&emsp;<span class="blue number_font" id="effect_change_count">0</span></div>
+                    <div class="counter">数値変更回数:&emsp;<span class="blue number_font" id="value_change_count">0</span></div>
+                </div>
+                <div class="counter_long">
+                    <div>
+                        効果変更消費数:&emsp;<span class="blue number_font" id="c_module_effect_usage_count">0</span><br>
+                        数値変更消費数:&emsp;<span class="blue number_font" id="c_module_value_usage_count">0</span><br>
+                        ロック時消費数:&emsp;<span class="blue number_font" id="c_module_lock_usage_count">0</span><br>
+                        カスタムモジュール合計消費数:&emsp;<span class="blue number_font" id="c_module_usage_count">0</span>
+                    </div>
+                </div>
+        
+            
+        
+                <!-- 初回オーバーロード選択 -->
+                <div class="first_overload">
+                    <input type="checkbox" id="first_overload" name="first_overload" checked />
+                    <label for="first_overload" id="toggle_button" class="fa-solid fa-toggle-on fa-2xl blue cursor"></label>
+                    <label for="first_overload" class="black cursor">初回オーバーロード(11段階固定)</label>
+                </div>
+        
+                <!-- リセット -->
+                <a class="button_reset" onclick="reset_option()">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    RESET
+                </a>
+                
+            </div>
+        
+            <div class="container">
+                <!-- オプション選択 -->
+                <div class="selects_container">
+                    <label>オーバーロード状況を選択</label>
+                    <div class="select_container">
+                        <select id="options-select_0" class="select_option"></select>
+                        <select id="options-select_value_0" class="select_value number_font"></select>
+                        <div id="options-select_rank_0"class="select_rank number_font"></div>
+                    </div>
+                    <div class="select_container">
+                        <select id="options-select_1" class="select_option"></select>
+                        <select id="options-select_value_1" class="select_value number_font"></select>
+                        <div id="options-select_rank_1"class="select_rank number_font"></div>
+                    </div>
+                    <div class="select_container">
+                        <select id="options-select_2" class="select_option"></select>
+                        <select id="options-select_value_2" class="select_value number_font"></select>
+                        <div id="options-select_rank_2"class="select_rank number_font"></div>
+                    </div>
+                    
+
+                    
+        
+                </div>
+                <a id="button_apply" class="button_roll button_apply" onclick="options_select_apply()">
+                    適用
+                </a>
+
+
+                <!-- 各段の付与率表 -->
+                <div class="slot_table_container">
+                    <div class="container" >
+                        <table class="" id="slot_table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">各スロット付与率</th>
+                                </tr>
+                                <tr>
+                                    <th>スロット１</th>
+                                    <th class="number_font">100%</th>
+                                </tr>
+                                <tr>
+                                    <th>スロット２</th>
+                                    <th class="number_font">50%</th>
+                                </tr>
+                                <tr>
+                                    <th>スロット３</th>
+                                    <th class="number_font">30%</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 各段の付与率表 -->
+                    <div class="container" >
+                        <table id="slot_table">
+                            <thead>
+                                <tr>
+                                    <th>ロック<br>状態</th>
+                                    <th colspan="2">効果/数値変更時の<br>カスタムモジュール消費数</th>
+                                </tr>
+                                <tr>
+                                    <th>無し</th>
+                                    <th><span class="number_font">1</span>個</th>
+                                </tr>
+                                <tr>
+                                    <th>１枠</th>
+                                    <th><span class="number_font">2</span>個</th>
+                                </tr>
+                                <tr>
+                                    <th>２枠</th>
+                                    <th><span class="number_font">3</span>個</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <div class="container">
+        <!-- オーバーロード表 -->
+        <div class="table-container">
+            <table id="overload_table" class="overload_table">
+                <thead>
+                    <tr id="headerRow_1">
+                        <th></th>
+                        <th>段階</th>
+                    </tr>
+                    <tr id="headerRow_2">
+                        <th>オプション名</th>
+                        <th>付与率</th>
+                        <th colspan="5" class="green number_font">60%</th>
+                        <th colspan="5" class="orange number_font">35%</th>
+                        <th colspan="5" class="red number_font">5%</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+      
+    
+	<script src="./js/main.js"></script>
+    <script src="./js/overload_gacha.js"></script>
+    <script src="./js/select_option.js"></script>
+    <script src="./js/first_overload.js"></script>
+    <script src="./js/overload_table.js"></script>
+    <script src="./js/counter.js"></script>
+    
+    <footer>
+        <p></p>
+    </footer>
+
+    
+</body>
+
+</html>

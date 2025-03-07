@@ -1,0 +1,441 @@
+body{
+    background-color: rgb(80, 80, 80);
+    font-family: "Kosugi Maru","Arial Black", Arial, sans-serif;
+    font-weight: bold;
+    touch-action: manipulation;
+}
+
+h1{
+    font-size: 30px;
+    color: rgb(255, 50, 50);
+}
+
+.number_font {
+    font-family: "Arial Black", Arial, sans-serif;
+}
+.column {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2列 */
+    align-items: start;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.table_head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#table_head th {
+    background-color: #b9b9b9;
+    text-align: center;
+    border: 1px solid #a5a5a5;
+    border-radius: 5px;
+    width: 130px;
+}
+
+#table_head th:nth-child(1) {
+    width: 53%;
+}
+#table_head th:nth-child(2) {
+    width: 20%;
+}
+
+
+.row {
+    display: flex;
+    align-items: center;
+    width: 400px;
+    border: 2px solid #a5a5a5;
+    background-color: rgb(250, 250, 250);
+    text-align: center;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.option_name {
+    width: 51%; /* セルの幅*/
+    text-align: right;
+}
+.option_value {
+    width: 22%; /* セルの幅*/
+    text-align: right;
+}
+.option_rank {
+    width: 20%; /* セルの幅*/
+    text-align: center;
+}
+
+.gray {
+    color: rgb(200, 200, 200);
+}
+
+.black_white {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.blue {
+    color: rgb(0, 140, 255);
+}
+
+.green {
+    color: rgb(0, 200, 0);
+}
+
+.orange {
+    color: rgb(255, 150, 0);
+}
+
+.red {
+    color: rgb(255, 0, 0);
+}
+
+.button_lock {
+    width: 10%;
+    height: 10%;
+    padding: 1px 1px;
+    justify-content: flex-end;
+    color: white;
+    background-color: rgb(88, 88, 88);
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.button_lock:hover {
+    background-color: rgb(128, 128, 128);/* クリック前のホバー色 */
+}
+
+.button_lock.clicked {
+    background-color: rgb(0, 100, 255); /* クリック後の色 */
+}
+
+.button_lock.clicked:hover {
+    background-color: rgb(0, 150, 255); /* クリック後のホバー色 */
+}
+
+.button_container {
+    display: flex;
+}
+
+.button_roll {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 20px;
+    width: 180px;
+    margin: 5px;
+    font-weight: bold;
+    font-family: "Kosugi Maru","Arial Black", Arial, sans-serif;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    user-select: none;
+}
+.button_roll:active {
+    transform: translateY(2px);
+}
+
+.button_roll_blue {
+    color: white;
+    background-color: rgb(0, 100, 255);
+}
+
+.button_roll_blue:hover {
+    background-color: rgb(0, 120, 255);/* クリック前のホバー色 */
+}
+
+.button_roll_red {
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(to bottom, rgb(255, 0, 120), rgb(255, 192, 222));
+}
+
+.button_roll_red:hover {
+    background-image: linear-gradient(to bottom, rgb(255, 40, 130), rgb(255, 221, 237));
+}
+
+.counter_container{
+    display: flex;
+}
+
+.counter {
+    align-items: center;
+    text-align: center;
+    border: 2px solid rgb(165, 165, 165);
+    border-radius: 20px;
+    background-color: #fff;
+    padding-inline: 10px;
+    margin: 10px;
+}
+
+.counter_long {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid rgb(165, 165, 165);
+    border-radius: 20px;
+    background-color: #fff;
+    padding-inline: 10px;
+    margin: 5px;
+    text-align: center;
+}
+
+.first_overload {
+    color: #ffffffc0;
+    margin: 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+#first_overload {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.button_reset {
+    padding: 5px 10px;
+    letter-spacing: 0.1em;
+    background-color: rgb(240, 100, 0);
+    border-radius: 5vh;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+    user-select: none;
+}
+
+.button_reset:active {
+    transform: translateY(2px);
+}
+
+.button_reset:hover {
+    background-color: rgb(255, 120, 0);
+}
+
+.selects_container{
+    align-items: center;
+    text-align: center;
+    border: 2px solid rgb(165, 165, 165);
+    border-radius: 20px;
+    background-color: rgb(240, 240, 240);
+    padding-inline: 10px;
+    margin-top: 25px;
+}
+
+.select_container{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+select{
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid rgb(165, 165, 165);
+    border-radius: 50px;
+    padding: 5px;
+    font-weight: bold;
+    font-family: "Kosugi Maru","Arial Black", Arial, sans-serif;
+    margin: 1px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.select_option{
+    width: 200px;
+    font-weight: bold;
+}
+
+.select_option:nth-child(odd){
+    background-color: #ffffff; /* 奇数行の背景色 */
+}
+
+.select_option:nth-child(even){
+    background-color: rgb(240, 240, 240); /* 偶数行の背景色 */
+}
+
+.select_value{
+    width: 80px;
+    text-align: right;
+}
+
+.select_rank{
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(165, 165, 165);
+    background-color: rgb(255, 255, 255);
+    padding: 2px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+.option {
+    font-weight: bold;
+}
+
+.value-color {
+    color: rgb(0, 0, 0); /* テキスト色 */
+}
+
+.value-color:nth-child(n) {
+    background-color: rgb(240, 255, 240); /* 背景色 */
+}
+
+.value-color:nth-child(n+6) {
+    background-color: rgb(255, 250, 240); /* 背景色 */
+}
+
+.value-color:nth-child(n+11) {
+    background-color: rgb(255, 240, 240); /* 背景色 */
+}
+
+.value-color:nth-child(n+12) {
+    color: rgb(0, 140, 255); /* テキスト色 */
+}
+
+.value-color:nth-child(15) {
+    color: rgb(0, 140, 255); /* テキスト色 */
+    background-color: rgb(0, 0, 0);
+}
+
+.button_apply {
+    color: white;
+    background-color: rgb(0, 100, 255);
+    width: 50px;
+    font-size: 17px;
+}
+
+.button_apply:hover {
+    background-color: rgb(0, 120, 255);/* クリック前のホバー色 */
+}
+
+.table-container{
+    overflow: auto; /* スクロールバーを有効にする */
+    white-space: nowrap;
+    max-width: 100%;
+    background-color:#FFFFFF;   
+}
+
+.overload_table, #slot_table{
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    overflow: auto;
+    font-size: 15px;
+    background-color:#FFFFFF;   
+}
+
+th, td {
+    border: 1px solid rgb(165, 165, 165);
+}
+
+
+#overload_table td:nth-child(n+3) , #overload_table th:nth-child(n+3) ,#headerRow_2 th:nth-child(3){
+    background-color: rgb(240, 255, 240); /* 背景色 */
+    mix-blend-mode: multiply;
+}
+
+#overload_table td:nth-child(n+8) , #overload_table th:nth-child(n+8) ,#headerRow_2 th:nth-child(4){
+    background-color: rgb(255, 250, 240); /* 背景色 */
+}
+
+#overload_table td:nth-child(n+13) , #overload_table th:nth-child(n+13) ,#headerRow_2 th:nth-child(5){
+    background-color: rgb(255, 240, 240); /* 背景色 */
+}
+
+#overload_table td:nth-child(n+14) {
+    color: rgb(0, 140, 255);
+}
+
+#overload_table td:nth-child(17) {
+    background-color: rgb(0, 0, 0); /* 背景色 */
+}
+
+#tableBody tr:nth-child(even) {
+    background-color: rgb(240, 240, 240);
+}
+
+.option_name_cell , .option_probability_cell{
+    text-align: center;
+}
+
+.value_cell {
+    height: 10px;
+    text-align: right;
+}
+
+.slot_table_container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+#slot_table th {
+    padding: 2px;
+}
+
+#slot_table tr:nth-child(odd) {
+    background-color: rgb(240, 240, 240);
+}
+
+@media screen and (max-width: 800px) {
+    .column {
+        grid-template-columns: 1fr; /* 800px以下の場合は1列 */
+    }
+}
+
+@media screen and (max-width:500px) { 
+    h1{
+        font-size: 20px;
+    }
+    .table_head {
+        font-size: 13px;
+    }
+    #table_head th {
+        width: 110px;
+    }
+
+    .row {
+        width: 350px;
+    }
+
+    .option_name {
+        font-size: 13px;
+    }
+
+    .button_roll{
+        width: 150px;
+    }
+
+    .counter {
+        margin-inline: 5px;
+    }
+
+    .select_option{
+        width: 180px;
+    }
+
+    .select_value{
+        width: 60px;
+    }
+
+    #slot_table th {
+        font-size: 13px;
+    }
+  }
