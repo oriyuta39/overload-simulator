@@ -50,6 +50,7 @@ function cModuleLockUsageCounter(locked) {
     if (locked) {
         cModuleFactor++;
         updateCounter("cModuleLockUsage");
+        updateCounter("cModuleUsage");
     } else {
         cModuleFactor--;
     }
