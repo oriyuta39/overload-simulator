@@ -20,7 +20,11 @@ let cModuleFactor = 1;
 
 // カウント＆表示関数
 function updateCounter(key) {
-    counters[key] += cModuleFactor;
+    if(key === "effectChange" || key === "valueChange"){
+        counters[key] += 1;
+    }else{
+        counters[key] += cModuleFactor;
+    }
     counterElements[key].textContent = counters[key];
 }
 
