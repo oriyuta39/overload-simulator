@@ -26,7 +26,6 @@ function button_lock_clicked(button,row) {
     button.classList.toggle("clicked");
     // ロック状態変更
     lockstatus[row] = !lockstatus[row]
-    console.log(lockstatus)
 }
 
 //武器改造&効果変更関数
@@ -68,11 +67,4 @@ function options_select_apply() {
     if (select_gets.optionsResult[0] == "-") return
     firstOverloadChecked(false)
     select_apply(select_gets);
-}
-
-
-
-function test() {
-    console.log("a")
-
 }
