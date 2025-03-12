@@ -13,10 +13,8 @@ checkbox.addEventListener('change', () => {
     }
 
     if (checkbox.checked) {
-        console.log("チェックされました！");
         firstOverloadChecked(true)
     } else {
-        console.log("チェックが外されました！");
         firstOverloadChecked(false)
     }
 });
